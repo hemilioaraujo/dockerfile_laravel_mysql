@@ -1,6 +1,6 @@
 # Diretório padrão do NGINX é html, o comando faz um link simbólico
 # com o diretório public do projeto.
-RUN ln -s public html
+# RUN ln -s public html
 
 
 # # Troca a configuração padrão do Nginx pela nossa
