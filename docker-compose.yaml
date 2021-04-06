@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    laravel-app:
+        image: wyveo/nginx-php-fpm
+        container_name: laravel-app
+        ports:
+            - "8080:80"
+        volumes:
+            - ./:/usr/share/nginx
+        networks: 
+            - app-network
+        working_dir: /usr/share/nginx/
+
+    mysql-app:
+        image: mysql
+        container_name: mysql-app
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: laravel
+            MYSQL_ROOT_PASSWORD: laravel
+        volumes:
+            - .docker/dbdata:/var/lib/mysql
+        networks: 
+            - app-network
+
+networks: 
+    app-network:
+        driver: bridge
